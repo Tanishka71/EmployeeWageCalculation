@@ -8,6 +8,21 @@ public class EmployeeWage {
 	
 	
 	/*
+	 * @params:none
+	 * @return:integer(1/0)
+	 * @desc:checks whether the employee is present or absent
+	 */	  
+	static int checkAttendance() {
+		double attendanceValue = Math.random();
+		if (attendanceValue > 0.5) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+	
+	/*
 	 * @params:hoursWorked
 	 * @return:integer(1/0)
 	 * @desc:checks whether the employee is full time or part time
@@ -18,7 +33,7 @@ public class EmployeeWage {
         }
         else {
         	return 0; 
-    }  
+    }    
     }
     
     
@@ -26,25 +41,26 @@ public class EmployeeWage {
 	 * @params:hoursWorked
 	 * @return:integer(dailyWage of the employee)
 	 * @desc:calculates the daily wage of the employee
-	 */	
+	 */	  
     static int calculateWage(int hoursWorked) {
         int dailyWage = hoursWorked * WAGE_PER_HOUR;
         return dailyWage;
     }
-     
     
+   
+     
 	/*
-	 * @params:none
+	 * @params:daysWorked
 	 * @return:none
-	 * @desc:calls the function calculateWage,checkPartFullTime and prints the daywise income & total income
-	 */
-    public static void main(String[] args){
-        System.out.println("Welcome to Employee Wage Computation Program");
-        Random random=new Random();
-        int daysWorked=random.nextInt(21);
+	 * @desc:calls the function checkAttendance ,calculateWage,checkPartFullTime and prints the daywise income & total income
+	 */	 
+    static void monthlyAmount(int daysWorked){
+    	Random random=new Random();
         int totalIncome=0,totalHours=0,i=1;
         while(i<=daysWorked && totalHours<=100) {
-                int hoursWorked=random.nextInt(8)+1;
+        	    int presence=checkAttendance();
+        	    if(presence ==1) {
+                    int hoursWorked=random.nextInt(8)+1;
 
                     int check=checkPartFullTime(hoursWorked);
                     if(check ==1) {
@@ -61,11 +77,29 @@ public class EmployeeWage {
                         System.out.println(" Day "+i+" part time:"+dailyWage+"$");
                          i++;
                     }
-                 }
-              	
-        System.out.println("total salary:"+totalIncome+"$");
-        System.out.println("total hours:"+totalHours+"hours");
+        	    }
+        	    else {
+        	    	System.out.println(" Day "+i+" employee is absent:");
+        	    	i++;
+        	    }
+            	
+                }
+        System.out.println(" total salary:"+totalIncome+"$");
+        System.out.println(" total hours:"+totalHours+"hours");
     }
 
+	/*
+	 * @params:main
+	 * @return:none
+	 * @desc:creates object for random class and takes days randomly
+	 */	 
+    public static void main(String[] args){
+        System.out.println("Welcome to EMPLOYEE WAGE COMPUTATION PROGRAM!!");
+        System.out.println();
+        Random random=new Random();
+        int daysWorked=random.nextInt(21);
+        monthlyAmount(daysWorked);
+
+    }
 	
 }
