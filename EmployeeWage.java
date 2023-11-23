@@ -17,15 +17,24 @@ public class EmployeeWage {
     }
      
      
- 	/*
- 	 * @params:none
- 	 * @return:none
- 	 * @desc:calculates the dialy wage
- 	 */	 
+		/*
+		 * @params:main
+		 * @return:none
+		 * @desc:creates object for random class and prints wage calling calculateWage function
+		 */	 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program");
         Random random=new Random();
         int hoursWorked=random.nextInt(9);
+        if(hoursWorked == full_day && hoursWorked>0) {
+        	System.out.println("Full time employee.");
+        }
+        else if(hoursWorked<8 && hoursWorked>0){
+        	System.out.println("Part time employee."); 
+    }
+        else {
+        	System.out.println("Employee is absent");
+        }
         int dailyWage = calculateWage(hoursWorked);
         System.out.println("Daily Wage of this employee: $" + dailyWage);
 }
