@@ -1,28 +1,32 @@
 package EmployeeWage;
 
+import java.util.Random;
+
 public class EmployeeWage {
+	static final int WAGE_PER_HOUR=20;
+	static final int full_day=8;
+	
 	/*
 	 * @params:hoursWorked
-	 * @return:none
-	 * @desc:checks whether the employee is full time or part time
-	 */	 
-    private static void checkAttendance() {
-        double attendanceValue = Math.random();
-
-        if (attendanceValue > 0.5) {
-            System.out.println("Employee is present.");
-        } else {
-            System.out.println("Employee is absent.");
-        }
+	 * @return:integer(dailyWage of the employee)
+	 * @desc:calculates the daily wage of the employee
+	 */	  
+     static int calculateWage(int hoursWorked) {
+        int dailyWage = hoursWorked * WAGE_PER_HOUR;
+        return dailyWage;
     }
-    
+     
+     
  	/*
  	 * @params:none
  	 * @return:none
- 	 * @desc:prints whether employee is present or absent
+ 	 * @desc:calculates the dialy wage
  	 */	 
-    public static void main(String[] args){
-        System.out.println("ATTENDANCE of the employee:");
-        checkAttendance();
-    }
+    public static void main(String[] args) {
+        System.out.println("Welcome to Employee Wage Computation Program");
+        Random random=new Random();
+        int hoursWorked=random.nextInt(9);
+        int dailyWage = calculateWage(hoursWorked);
+        System.out.println("Daily Wage of this employee: $" + dailyWage);
+}
 }
