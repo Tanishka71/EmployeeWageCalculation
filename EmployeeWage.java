@@ -1,10 +1,16 @@
-package EmployeeWage;
+package com.bridgelazbz.employee;
 
 import java.util.Random;
 
-public class EmployeeWage {
+/*@desc:class for calculation of employee wage*/
+class EmployeeWageCalculation {
 	static final int WAGE_PER_HOUR=20;
 	static final int full_day=8;
+	int daysWorked;
+	
+	EmployeeWageCalculation(int daysWorked){
+		this.daysWorked=daysWorked;
+	}
 	
 	
 	/*
@@ -88,6 +94,9 @@ public class EmployeeWage {
         System.out.println(" total hours:"+totalHours+"hours");
     }
 
+}
+/*@desc:main class*/
+    class EmployeeWage{
 	/*
 	 * @params:main
 	 * @return:none
@@ -98,7 +107,8 @@ public class EmployeeWage {
         System.out.println();
         Random random=new Random();
         int daysWorked=random.nextInt(21);
-        monthlyAmount(daysWorked);
+        EmployeeWageCalculation obj=new EmployeeWageCalculation(daysWorked);
+        obj.monthlyAmount(daysWorked);
 
     }
 	
